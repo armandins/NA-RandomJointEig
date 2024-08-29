@@ -39,3 +39,11 @@ Run ExampleBrassTeflon to reproduce Example 6.2
 
 Run ExampleGrafTownsend to reproduce Example 7.2
 
+## References
+
+  - Folder BiRoots contains Matlab toolbox for roots of systems of bivariate polynomials by B. Plestenjak (https://www.mathworks.com/matlabcentral/fileexchange/54159-biroots)
+  - Folder OldMultiParEig contains required files from MultiParEig 2.7 (December 2022): Toolbox for multiparameter and singular eigenvalue problems by B. Plestenjak (https://www.mathworks.com/matlabcentral/fileexchange/47844-multipareig)
+  - Folder NewMultiParEig contains required files from MultiParEig 2.8 (August 2024): Toolbox for multiparameter and singular eigenvalue problems by B. Plestenjak (https://www.mathworks.com/matlabcentral/fileexchange/47844-multipareig)
+  - Data and solver for ExampleBrassTeflon are from H. Gravenkamp, B. Plestenjak, D. A. Kiefer, J. Elias: "Computation of leaky waves in layered structures coupled to unbounded media by exploiting multiparameter eigenvalue problems". arXiv:2404.15277, 2024.
+
+
