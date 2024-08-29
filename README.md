@@ -4,13 +4,12 @@ Numerical examples for Randomized Joint Eigenvalue Approximation
 This repository contains numerical examples for the paper:  Haoze He, Daniel Kressner, 
   Bor Plestenjak, "Randomized methods for computing joint eigenvalues, 
   with applications to multiparameter eigenvalue problems and root finding"
-
   
 Matlab examples run in Matlab 2023a or higher. 
 
 ## Numerical experiments for synthetic data
 
-To reproduce numerical results in this section, set variables example, deltadif (only for example=3), Nsamples and call script ExampleMain
+To reproduce numerical results in this section, set variables example, deltadif (only for example=3), Nsamples and run ExampleMain
 
 Possible values of example are:
 
@@ -26,16 +25,17 @@ Possible values of example are:
  
 To change the sample size (default is 10000), set variable Nsamples
 
-Run script ExampleLemma44 to get Figure 3 (left)
+Run ExampleLemma44 to get Figure 3 (left)
 
-Setting example=1.2 requires Advanpix Multiprecision Computing Toolbox. If not available, change line 45 in testRayleigh to use_advapix=0  
+Setting example=1.2 requires Advanpix Multiprecision Computing Toolbox. If not available, change line 45 in testRayleigh.m to use_advapix=0  
 
 ## Multiparameter eigenvalue problems
 
-Run script ExampleEisenmann to reproduce Example 6.1
-Run script ExampleBrassTeflon to reproduce Example 6.2
+Run ExampleEisenmann to reproduce Example 6.1
+
+Run ExampleBrassTeflon to reproduce Example 6.2
 
 ## Roots of polynomial systems
 
-Run scripte ExampleGrafTownsend to reproduce Example 7.2
+Run ExampleGrafTownsend to reproduce Example 7.2
 
