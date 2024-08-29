@@ -37,6 +37,8 @@ Run ExampleBrassTeflon to reproduce Example 6.2
 
 ## Roots of polynomial systems
 
+Go to the folder rootfinding_examples to reproduce Example 7.1, the instruction is contained there.
+
 Run ExampleGrafTownsend to reproduce Example 7.2
 
 ## References
@@ -45,5 +47,7 @@ Run ExampleGrafTownsend to reproduce Example 7.2
   - Folder OldMultiParEig contains required files from MultiParEig 2.7 (December 2022): Toolbox for multiparameter and singular eigenvalue problems by B. Plestenjak (https://www.mathworks.com/matlabcentral/fileexchange/47844-multipareig)
   - Folder NewMultiParEig contains required files from MultiParEig 2.8 (August 2024): Toolbox for multiparameter and singular eigenvalue problems by B. Plestenjak (https://www.mathworks.com/matlabcentral/fileexchange/47844-multipareig)
   - Data and solver for ExampleBrassTeflon are from H. Gravenkamp, B. Plestenjak, D. A. Kiefer, J. Elias: "Computation of leaky waves in layered structures coupled to unbounded media by exploiting multiparameter eigenvalue problems". arXiv:2404.15277, 2024.
+  - Folder rootfinding_examples contains code of Example 7.1, based on the implementation from S. Telen and M. Van Barel: "A stabilized normal form algorithm for generic systems of polynomial equations." J. Comput. Appl. Math., 342:119–132, 2018. (https://github.com/simontelen/NormalForms) and C. Vermeersch: "The (Block) Macaulay Matrix: Solving Systems of Multivariate Polynomial Equations
+  and Multiparameter Eigenvalue Problems". Phd thesis, Katholieke Universiteit Leuven, June 2023. (https://gitlab.esat.kuleuven.be/Christof.Vermeersch/macaulaylab-public)
 
 
