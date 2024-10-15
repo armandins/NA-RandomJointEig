@@ -27,6 +27,7 @@ runs = 1000;
 opts = [];
 opts.refine = 0;
 opts.twosidedRQ = 1;
+method = 0; % this uses the default bipoly_detrep_quintic method for the linearization
 
 mediana = [];
 
@@ -40,7 +41,7 @@ for j = 1:N
         [Q,~] = qr(A);
         P1 = [1/9-sigma*Q(1,1)/3-sigma*Q(1,2)/3  sigma*Q(1,2)  0; -2/3+sigma*Q(1,1) 0 0; 1 0 0];
         P2 = [1/9-sigma*Q(2,1)/3-sigma*Q(2,2)/3  -2/3+sigma*Q(2,2)  1; sigma*Q(2,1) 0 0; 0 0 0];
-        [x,y] = biroots(P1,P2,0,opts);
+        [x,y] = biroots(P1,P2,method,opts);
         razlika = [x y]-[1/3 1/3];
         napaka(k,1) = min(sqrt(diag(razlika*razlika')));
     end
@@ -64,7 +65,7 @@ for j = 1:N
         [Q,~] = qr(A);
         P1 = [1/9-sigma*Q(1,1)/3-sigma*Q(1,2)/3  sigma*Q(1,2)  0; -2/3+sigma*Q(1,1) 0 0; 1 0 0];
         P2 = [1/9-sigma*Q(2,1)/3-sigma*Q(2,2)/3  -2/3+sigma*Q(2,2)  1; sigma*Q(2,1) 0 0; 0 0 0];
-        [x,y] = biroots(P1,P2,0,opts);
+        [x,y] = biroots(P1,P2,method,opts);
         razlika = [x y]-[1/3 1/3];
         napaka(k,1) = min(sqrt(diag(razlika*razlika')));
     end

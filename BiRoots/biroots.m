@@ -144,7 +144,9 @@ while (run<maxiter) && ~success
         P2S = bipolyshift(P2S,beta(run),3);
     end
     [A1, B1, C1, met1, flag1] = bipoly_detrep(P1S,method,opts);
+    % [A1, C1, B1, met1, flag1] = bipoly_detrep(P1S',method,opts); % alternative linearization of P1 with swapped x and y 
     [A2, B2, C2, met2, flag2] = bipoly_detrep(P2S,method,opts);
+    % [A2, C2, B2, met2, flag2] = bipoly_detrep(P2S',method,opts); % alternative linearization of P2 with swapped x and y 
     lin_iter = flag1 + flag2;
     if (flag1>=0) && (flag2>=0)
         m = size(A1,1)*size(A2,1);

@@ -60,44 +60,31 @@ n = size(P,1)-1; % n is degree, size is n+1
 minerr = Inf; 
 A = []; B = []; C = [];
 
-% if any of the bounds that should preserve numerical stability is
-% exceeded, a random orthogonal transformation is applied up to max_tries 
-% times before the method fails
+% if any of the bounds that should preserve numerical stability is exceeded, 
+% the linerization is computed with a new random orthogonal transformation up to max_tries
 flag = 1;
 iter = 0;
 while (flag~=0) && (iter<max_tries)
-    if iter>0
-        QS = orth(rand(3)); % random orthogonal transformation of (x,y,z)
-        P1 = bipolysubstitution(P,QS');
-    else
-        P1 = P;
-    end
+    QS = orth(rand(3)); % random orthogonal transformation of (x,y,z)
+    P1 = bipolysubstitution(P,QS');
     [A1,B1,C1,flag] = detrep_nxn(P1,opts);
     if flag==0
         linerror = test_linearization(P1,A1,B1,C1);
         if linerror<max_linerr
-            if iter == 0
-                A = A1; B = B1; C = C1;
-            else
-                A = QS(1,3)*B1 + QS(2,3)*C1 + QS(3,3)*A1;
-                B = QS(1,1)*B1 + QS(2,1)*C1 + QS(3,1)*A1;
-                C = QS(1,2)*B1 + QS(2,2)*C1 + QS(3,2)*A1;
-            end
+            A = QS(1,3)*B1 + QS(2,3)*C1 + QS(3,3)*A1;
+            B = QS(1,1)*B1 + QS(2,1)*C1 + QS(3,1)*A1;
+            C = QS(1,2)*B1 + QS(2,2)*C1 + QS(3,2)*A1;
         else
             flag = 1;
             if best_try && (linerror < minerr)
-                if iter == 0
-                    A = A1; B = B1; C = C1;
-                else
-                    A = QS(1,3)*B1 + QS(2,3)*C1 + QS(3,3)*A1;
-                    B = QS(1,1)*B1 + QS(2,1)*C1 + QS(3,1)*A1;
-                    C = QS(1,2)*B1 + QS(2,2)*C1 + QS(3,2)*A1;
-                end
+                A = QS(1,3)*B1 + QS(2,3)*C1 + QS(3,3)*A1;
+                B = QS(1,1)*B1 + QS(2,1)*C1 + QS(3,1)*A1;
+                C = QS(1,2)*B1 + QS(2,2)*C1 + QS(3,2)*A1;
                 minerr = linerror;
             end
         end
-    end
-    iter = iter + 1;
+     end 
+     iter = iter + 1;
 end
 
 if flag~=0
@@ -119,6 +106,7 @@ end
 function [A,B,C,flag] = detrep_nxn(P,opts)
 
 flag = 0;
+derv_crit = 1e-8; % heuristic criteria for a stable linearization
 
 if nargin<2
     opts=[];
@@ -153,7 +141,7 @@ if abs(P(1,n))>1e-14*norm(P)
     [tmp, index] = min(abs(r));
     tau = r(index);
     P = bipolyshift(P, tau, 3);          % x -> x + ry to eliminate y^n
-    if abs(derv(index)) < 1e-4
+    if abs(derv(index)) < derv_crit
         % multiple zero, shift does not exist
         flag = 1;
         return
@@ -168,7 +156,7 @@ c = diag(rot90(P,-1));
 
 zeta = roots(c(1:end-1));  % roots of x-y polynomial (without zero)
 derv = polyval(polyder(c(1:end-1)),zeta);  % values of derivative in roots
-if min(abs(derv)) < 1e-4
+if min(abs(derv)) < derv_crit
      % multiple zero, shift does not exist
      flag = 1;
      return
