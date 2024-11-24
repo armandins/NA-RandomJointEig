@@ -4,6 +4,8 @@ Numerical examples for Randomized Joint Eigenvalue Approximation
 This repository contains numerical examples for the paper:  Haoze He, Daniel Kressner, 
   Bor Plestenjak, "Randomized methods for computing joint eigenvalues, 
   with applications to multiparameter eigenvalue problems and root finding"
+
+DOI : https://doi.org/10.1007/s11075-024-01971-0
   
 Matlab examples run in Matlab 2023a or higher. 
 
